@@ -67,19 +67,19 @@ const Header = () => {
 
           {/* Language Switcher & Mobile Menu */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 md:gap-2">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code as any)}
-                  className={`px-2 py-1 text-sm font-medium rounded transition-colors flex items-center gap-1 ${
+                  className={`px-1.5 py-1 md:px-2 text-xs md:text-sm font-medium rounded transition-colors flex items-center gap-0.5 md:gap-1 ${
                     language === lang.code
                       ? 'bg-accent text-accent-foreground'
                       : isScrolled ? 'text-foreground/80 hover:text-foreground' : 'text-white/80 hover:text-white drop-shadow-sm'
                   }`}
                 >
-                  <span className="text-base">{lang.flag}</span>
-                  {lang.label}
+                  <span className="text-sm md:text-base">{lang.flag}</span>
+                  <span className="hidden sm:inline">{lang.label}</span>
                 </button>
               ))}
             </div>
