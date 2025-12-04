@@ -45,7 +45,7 @@ const Header = () => {
             <img 
               src={logoJanauatour} 
               alt="Janauatour - Viagens e Turismo" 
-              className="h-12 md:h-14 w-auto drop-shadow-md"
+              className="h-12 md:h-14 w-12 md:w-14 rounded-full object-cover drop-shadow-md"
             />
           </button>
 
