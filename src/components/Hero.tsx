@@ -1,9 +1,22 @@
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import heroImage from '@/assets/hero-amazon.jpg';
+import encontroAguas from '@/assets/encontro-das-aguas.jpg';
+import teatroAmazonas from '@/assets/teatro-amazonas.jpg';
+import botos from '@/assets/botos.jpg';
+
+const heroImages = [encontroAguas, teatroAmazonas, botos];
 
 const Hero = () => {
   const { t } = useLanguage();
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -12,14 +25,37 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Amazon rainforest"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 gradient-hero" />
+      {/* Background Images Carousel */}
+      {heroImages.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentImage ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <img
+            src={image}
+            alt={`Amazon rainforest ${index + 1}`}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 gradient-hero" />
+        </div>
+      ))}
+
+      {/* Carousel Indicators */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImage(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentImage 
+                ? 'bg-white scale-110' 
+                : 'bg-white/50 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
 
       {/* Content */}
