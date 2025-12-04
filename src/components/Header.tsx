@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logoJanauatour from '@/assets/logo-janauatour.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,9 +28,13 @@ const Header = () => {
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('hero')}
-            className="text-2xl font-heading font-bold text-white hover:text-accent transition-colors drop-shadow-md"
+            className="hover:opacity-90 transition-opacity"
           >
-            Janauatour
+            <img 
+              src={logoJanauatour} 
+              alt="Janauatour - Viagens e Turismo" 
+              className="h-12 md:h-14 w-auto drop-shadow-md"
+            />
           </button>
 
           {/* Desktop Navigation */}
