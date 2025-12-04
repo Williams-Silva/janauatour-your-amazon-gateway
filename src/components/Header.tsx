@@ -25,10 +25,10 @@ const Header = () => {
   };
 
   const languages = [
-    { code: 'pt', label: 'PT' },
-    { code: 'en', label: 'EN' },
-    { code: 'es', label: 'ES' },
-    { code: 'fr', label: 'FR' },
+    { code: 'pt', label: 'PT', flag: '🇧🇷' },
+    { code: 'en', label: 'EN', flag: '🇺🇸' },
+    { code: 'es', label: 'ES', flag: '🇪🇸' },
+    { code: 'fr', label: 'FR', flag: '🇫🇷' },
   ];
 
   return (
@@ -72,12 +72,13 @@ const Header = () => {
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code as any)}
-                  className={`px-2 py-1 text-sm font-medium rounded transition-colors ${
+                  className={`px-2 py-1 text-sm font-medium rounded transition-colors flex items-center gap-1 ${
                     language === lang.code
                       ? 'bg-accent text-accent-foreground'
                       : isScrolled ? 'text-foreground/80 hover:text-foreground' : 'text-white/80 hover:text-white drop-shadow-sm'
                   }`}
                 >
+                  <span className="text-base">{lang.flag}</span>
                   {lang.label}
                 </button>
               ))}
