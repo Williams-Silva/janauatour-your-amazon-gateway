@@ -38,7 +38,7 @@ const Hero = () => {
             alt={`Amazon rainforest ${index + 1}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 gradient-hero" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
       ))}
 
