@@ -53,7 +53,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif'],
+        heading: ['Playfair Display', 'Georgia', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
