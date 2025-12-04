@@ -36,7 +36,7 @@ const Hero = () => {
           <img
             src={image}
             alt={`Amazon rainforest ${index + 1}`}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${index === 2 ? 'object-bottom' : ''}`}
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
