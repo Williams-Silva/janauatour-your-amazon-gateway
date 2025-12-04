@@ -51,16 +51,16 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollToSection('services')} className={`transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
+            <button onClick={() => scrollToSection('services')} className={`font-semibold transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
               {t('nav.services')}
             </button>
-            <button onClick={() => scrollToSection('packages')} className={`transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
+            <button onClick={() => scrollToSection('packages')} className={`font-semibold transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
               {t('nav.packages')}
             </button>
-            <button onClick={() => scrollToSection('about')} className={`transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
+            <button onClick={() => scrollToSection('about')} className={`font-semibold transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
               {t('nav.about')}
             </button>
-            <button onClick={() => scrollToSection('contact')} className={`transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
+            <button onClick={() => scrollToSection('contact')} className={`font-semibold transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
               {t('nav.contact')}
             </button>
           </div>
@@ -97,16 +97,16 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in bg-black/50 backdrop-blur-md rounded-lg p-4">
-            <button onClick={() => scrollToSection('services')} className="text-left text-white hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('services')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.services')}
             </button>
-            <button onClick={() => scrollToSection('packages')} className="text-left text-white hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('packages')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.packages')}
             </button>
-            <button onClick={() => scrollToSection('about')} className="text-left text-white hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('about')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.about')}
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-left text-white hover:text-accent transition-colors">
+            <button onClick={() => scrollToSection('contact')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.contact')}
             </button>
           </div>
