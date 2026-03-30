@@ -35,8 +35,8 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-background/95 backdrop-blur-md shadow-md' : 'bg-transparent'
     }`}>
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4">
+        <nav className="flex items-center justify-between" aria-label="Navegação principal">
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('hero')}
