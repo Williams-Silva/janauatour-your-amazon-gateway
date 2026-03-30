@@ -2,55 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/**
+ * Sistema de design da aplicação Janauatour.
+ * Define todas as cores, gradientes, fontes e animações.
+ * Todas as cores utilizam o formato HSL.
+ */
 
 @layer base {
+  /* Tema claro (padrão) */
   :root {
-    --background: 0 0% 98%;
-    --foreground: 200 20% 15%;
+    --background: 0 0% 98%;         /* Cor de fundo principal */
+    --foreground: 200 20% 15%;      /* Cor do texto principal */
 
-    --card: 0 0% 100%;
-    --card-foreground: 200 20% 15%;
+    --card: 0 0% 100%;              /* Fundo dos cards */
+    --card-foreground: 200 20% 15%; /* Texto dos cards */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 20% 15%;
+    --popover: 0 0% 100%;              /* Fundo dos popovers */
+    --popover-foreground: 200 20% 15%; /* Texto dos popovers */
 
-    --primary: 190 80% 35%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 190 80% 35%;            /* Cor primária (azul amazônico) */
+    --primary-foreground: 0 0% 100%;   /* Texto sobre cor primária */
 
-    --secondary: 150 60% 40%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 150 60% 40%;            /* Cor secundária (verde floresta) */
+    --secondary-foreground: 0 0% 100%;   /* Texto sobre cor secundária */
 
-    --muted: 190 15% 92%;
-    --muted-foreground: 200 10% 45%;
+    --muted: 190 15% 92%;             /* Cor suave para fundos secundários */
+    --muted-foreground: 200 10% 45%;  /* Texto em áreas suaves */
 
-    --accent: 45 95% 55%;
-    --accent-foreground: 200 20% 15%;
+    --accent: 45 95% 55%;             /* Cor de destaque (dourado) */
+    --accent-foreground: 200 20% 15%; /* Texto sobre cor de destaque */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;        /* Cor de erro/destruição */
+    --destructive-foreground: 0 0% 100%; /* Texto sobre cor de erro */
 
-    --border: 190 20% 85%;
-    --input: 190 20% 90%;
-    --ring: 190 80% 35%;
+    --border: 190 20% 85%;  /* Cor das bordas */
+    --input: 190 20% 90%;   /* Cor de fundo dos inputs */
+    --ring: 190 80% 35%;    /* Cor do anel de foco */
 
-    --radius: 0.75rem;
+    --radius: 0.75rem;  /* Raio de arredondamento padrão */
 
-    /* Amazon theme colors */
-    --amazon-blue: 190 80% 35%;
-    --forest-green: 150 60% 40%;
-    --gold: 45 95% 55%;
+    /* Cores temáticas da Amazônia */
+    --amazon-blue: 190 80% 35%;   /* Azul das águas */
+    --forest-green: 150 60% 40%;  /* Verde da floresta */
+    --gold: 45 95% 55%;           /* Dourado do sol */
     
-    /* Gradients */
+    /* Gradientes personalizados */
     --gradient-hero: linear-gradient(135deg, hsl(190 80% 35% / 0.95), hsl(150 60% 40% / 0.9));
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(190 15% 98%));
     
-    /* Animations */
+    /* Transições suaves */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* Tema escuro */
   .dark {
     --background: 200 30% 10%;
     --foreground: 0 0% 95%;
@@ -83,15 +87,18 @@ All colors MUST be HSL.
 }
 
 @layer base {
+  /* Aplica cor de borda padrão a todos os elementos */
   * {
     @apply border-border;
   }
 
+  /* Estilos globais do corpo da página */
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
+  /* Fonte especial para títulos (Playfair Display) */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
@@ -99,14 +106,17 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Classe utilitária para gradiente do hero */
   .gradient-hero {
     background: var(--gradient-hero);
   }
   
+  /* Classe utilitária para gradiente dos cards */
   .gradient-card {
     background: var(--gradient-card);
   }
   
+  /* Classes de cor temáticas */
   .text-amazon-blue {
     color: hsl(var(--amazon-blue));
   }
@@ -119,6 +129,7 @@ All colors MUST be HSL.
     color: hsl(var(--gold));
   }
   
+  /* Animação de entrada com fade e deslizamento */
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out;
   }

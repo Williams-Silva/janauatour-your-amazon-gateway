@@ -1,3 +1,8 @@
+/**
+ * Componente Header - Cabeçalho fixo com navegação.
+ * Inclui logo, menu de navegação desktop/mobile e seletor de idiomas.
+ * Muda de transparente para fundo sólido ao rolar a página.
+ */
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -5,10 +10,13 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import logoJanauatour from '@/assets/logo-janauatour.png';
 
 const Header = () => {
+  // Estado do menu mobile (aberto/fechado)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Estado de rolagem para mudar aparência do cabeçalho
   const [isScrolled, setIsScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
+  // Detecta rolagem da página para aplicar estilo ao cabeçalho
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
@@ -18,12 +26,14 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Função para rolagem suave até uma seção e fechar o menu mobile
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
+  // Lista de idiomas disponíveis com bandeiras
   const languages = [
     { code: 'pt', label: 'PT', flag: '🇧🇷' },
     { code: 'en', label: 'EN', flag: '🇺🇸' },
@@ -37,7 +47,7 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between" aria-label="Navegação principal">
-          {/* Logo */}
+          {/* Logo - clicável para voltar ao topo */}
           <button 
             onClick={() => scrollToSection('hero')}
             className="hover:opacity-90 transition-opacity"
@@ -49,7 +59,7 @@ const Header = () => {
             />
           </button>
 
-          {/* Desktop Navigation */}
+          {/* Navegação Desktop - visível apenas em telas médias e maiores */}
           <div className="hidden md:flex items-center gap-8">
             <button onClick={() => scrollToSection('services')} className={`font-semibold transition-colors ${isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-accent drop-shadow-sm'}`}>
               {t('nav.services')}
@@ -65,9 +75,10 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Language Switcher & Mobile Menu */}
+          {/* Seletor de idiomas e botão do menu mobile */}
           <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1 md:gap-2">
+            {/* Seletor de idiomas com bandeiras */}
+            <div className="flex items-center gap-1 md:gap-2">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
@@ -84,7 +95,7 @@ const Header = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Botão hambúrguer do menu mobile */}
             <button
               className={`md:hidden ${isScrolled ? 'text-foreground' : 'text-white drop-shadow-sm'}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -94,8 +105,7 @@ const Header = () => {
           </div>
         </nav>
 
-
-        {/* Mobile Menu */}
+        {/* Menu mobile - visível apenas quando aberto em dispositivos pequenos */}
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in bg-black/50 backdrop-blur-md rounded-lg p-4" aria-label="Menu mobile">
             <button onClick={() => scrollToSection('services')} className="text-left font-semibold text-white hover:text-accent transition-colors">
