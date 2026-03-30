@@ -43,18 +43,18 @@ const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial, index) => (
+            <article key={index}>
             <Card
-              key={index}
-              className="p-6 gradient-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="p-6 gradient-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full"
             >
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                 ))}
               </div>
-              <p className="text-foreground mb-4 leading-relaxed italic">
-                "{testimonial.text}"
-              </p>
+              <blockquote className="text-foreground mb-4 leading-relaxed italic">
+                <p>"{testimonial.text}"</p>
+              </blockquote>
               <div className="flex items-center gap-2">
                 <span className="text-2xl">{testimonial.flag}</span>
                 <div>
@@ -63,6 +63,7 @@ const Testimonials = () => {
                 </div>
               </div>
             </Card>
+            </article>
           ))}
         </div>
       </div>

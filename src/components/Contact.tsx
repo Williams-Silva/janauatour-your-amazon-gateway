@@ -77,7 +77,7 @@ const Contact = () => {
           </Card>
 
           {/* Contact Info */}
-          <div className="space-y-8">
+          <address className="space-y-8 not-italic">
             <Card className="p-6 gradient-card hover:shadow-lg transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
@@ -120,7 +120,7 @@ const Contact = () => {
                 </div>
               </div>
             </Card>
-          </div>
+          </address>
         </div>
       </div>
     </section>

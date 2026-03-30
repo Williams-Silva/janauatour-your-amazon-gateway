@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <nav aria-label="Serviços">
             <h4 className="font-semibold mb-3">{t('footer.services')}</h4>
             <ul className="space-y-2 text-primary-foreground/80">
               <li>Pacotes Turísticos</li>
@@ -23,7 +23,7 @@ const Footer = () => {
               <li>Hospedagem</li>
               <li>Translados</li>
             </ul>
-          </div>
+          </nav>
 
           {/* Contact & Social */}
           <div>

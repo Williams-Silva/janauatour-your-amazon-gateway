@@ -35,8 +35,8 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-background/95 backdrop-blur-md shadow-md' : 'bg-transparent'
     }`}>
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4">
+        <nav className="flex items-center justify-between" aria-label="Navegação principal">
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('hero')}
@@ -92,11 +92,12 @@ const Header = () => {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
-        </div>
+        </nav>
+
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in bg-black/50 backdrop-blur-md rounded-lg p-4">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in bg-black/50 backdrop-blur-md rounded-lg p-4" aria-label="Menu mobile">
             <button onClick={() => scrollToSection('services')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.services')}
             </button>
@@ -109,9 +110,9 @@ const Header = () => {
             <button onClick={() => scrollToSection('contact')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.contact')}
             </button>
-          </div>
+          </nav>
         )}
-      </nav>
+      </div>
     </header>
   );
 };
