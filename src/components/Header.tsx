@@ -94,9 +94,11 @@ const Header = () => {
           </div>
         </div>
 
+        </nav>
+
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in bg-black/50 backdrop-blur-md rounded-lg p-4">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in bg-black/50 backdrop-blur-md rounded-lg p-4" aria-label="Menu mobile">
             <button onClick={() => scrollToSection('services')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.services')}
             </button>
