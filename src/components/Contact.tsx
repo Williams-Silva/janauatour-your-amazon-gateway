@@ -120,7 +120,7 @@ const Contact = () => {
                 </div>
               </div>
             </Card>
-          </div>
+          </address>
         </div>
       </div>
     </section>

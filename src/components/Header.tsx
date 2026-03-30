@@ -111,9 +111,9 @@ const Header = () => {
             <button onClick={() => scrollToSection('contact')} className="text-left font-semibold text-white hover:text-accent transition-colors">
               {t('nav.contact')}
             </button>
-          </div>
+          </nav>
         )}
-      </nav>
+      </div>
     </header>
   );
 };

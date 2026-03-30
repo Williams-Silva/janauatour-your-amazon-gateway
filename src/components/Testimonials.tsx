@@ -63,6 +63,7 @@ const Testimonials = () => {
                 </div>
               </div>
             </Card>
+            </article>
           ))}
         </div>
       </div>

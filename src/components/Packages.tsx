@@ -78,6 +78,7 @@ const Packages = () => {
                 </Button>
               </div>
             </Card>
+            </article>
           ))}
         </div>
       </div>

@@ -66,6 +66,7 @@ const Services = () => {
                 {service.description}
               </p>
             </Card>
+            </article>
           ))}
         </div>
       </div>

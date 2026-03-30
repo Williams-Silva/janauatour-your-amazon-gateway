@@ -28,12 +28,14 @@ const Index = () => {
     <LanguageProvider>
       <div className="min-h-screen">
         <Header />
-        <Hero />
-        <Services />
-        <Packages />
-        <Testimonials />
-        <About />
-        <Contact />
+        <main>
+          <Hero />
+          <Services />
+          <Packages />
+          <Testimonials />
+          <About />
+          <Contact />
+        </main>
         <Footer />
         <WhatsAppButton />
       </div>
