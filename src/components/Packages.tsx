@@ -1,3 +1,8 @@
+/**
+ * Componente Packages - Seção de pacotes turísticos em destaque.
+ * Exibe cards com informações de cada pacote: título, descrição,
+ * preço inicial, funcionalidades inclusas e botão de ação.
+ */
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -6,6 +11,7 @@ import { Calendar, Users, MapPin } from 'lucide-react';
 const Packages = () => {
   const { t } = useLanguage();
 
+  // Lista de pacotes turísticos com dados traduzíveis
   const packages = [
     {
       title: t('packages.amazon3d'),
@@ -40,44 +46,51 @@ const Packages = () => {
   return (
     <section id="packages" className="py-24 bg-background">
       <div className="container mx-auto px-4">
+        {/* Cabeçalho da seção */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-primary">
             {t('packages.title')}
           </h2>
         </div>
 
+        {/* Grid de cards de pacotes */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {packages.map((pkg, index) => (
             <article key={index}>
-            <Card
-              className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-border/50 h-full"
-            >
-              <div className="bg-gradient-to-br from-primary to-secondary p-6 text-white">
-                <pkg.icon className="w-12 h-12 mb-4" />
-                <h3 className="text-2xl font-heading font-bold mb-2">{pkg.title}</h3>
-                <p className="text-sm opacity-95">{pkg.description}</p>
-              </div>
-
-              <div className="p-6">
-                <div className="mb-6">
-                  <p className="text-sm text-muted-foreground mb-1">{t('packages.from')}</p>
-                  <p className="text-3xl font-bold text-primary">{pkg.price}</p>
+              <Card
+                className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-border/50 h-full"
+              >
+                {/* Cabeçalho do card com gradiente */}
+                <div className="bg-gradient-to-br from-primary to-secondary p-6 text-white">
+                  <pkg.icon className="w-12 h-12 mb-4" />
+                  <h3 className="text-2xl font-heading font-bold mb-2">{pkg.title}</h3>
+                  <p className="text-sm opacity-95">{pkg.description}</p>
                 </div>
 
-                <ul className="space-y-2 mb-6">
-                  {pkg.features.map((feature, i) => (
-                    <li key={i} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-secondary rounded-full mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                {/* Corpo do card com preço, funcionalidades e botão */}
+                <div className="p-6">
+                  {/* Preço */}
+                  <div className="mb-6">
+                    <p className="text-sm text-muted-foreground mb-1">{t('packages.from')}</p>
+                    <p className="text-3xl font-bold text-primary">{pkg.price}</p>
+                  </div>
 
-                <Button className="w-full bg-primary hover:bg-primary/90">
-                  {t('packages.button')}
-                </Button>
-              </div>
-            </Card>
+                  {/* Lista de funcionalidades inclusas */}
+                  <ul className="space-y-2 mb-6">
+                    {pkg.features.map((feature, i) => (
+                      <li key={i} className="flex items-center text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 bg-secondary rounded-full mr-2" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Botão de ação */}
+                  <Button className="w-full bg-primary hover:bg-primary/90">
+                    {t('packages.button')}
+                  </Button>
+                </div>
+              </Card>
             </article>
           ))}
         </div>

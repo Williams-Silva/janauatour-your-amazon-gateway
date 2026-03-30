@@ -1,29 +1,40 @@
+/**
+ * Contexto de idioma da aplicação.
+ * Gerencia o idioma ativo e fornece a função de tradução (t)
+ * para todos os componentes. Suporta: Português, Inglês, Espanhol e Francês.
+ */
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+// Tipos de idiomas suportados
 type Language = 'pt' | 'en' | 'es' | 'fr';
 
+// Interface do contexto de idioma
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
 }
 
+/**
+ * Objeto de traduções organizado por idioma.
+ * Cada chave corresponde a um texto traduzível do site.
+ */
 const translations = {
   pt: {
-    // Header
+    // Navegação
     'nav.home': 'Início',
     'nav.services': 'Serviços',
     'nav.packages': 'Pacotes',
     'nav.about': 'Sobre',
     'nav.contact': 'Contato',
     
-    // Hero
+    // Seção Hero
     'hero.title': 'Descubra Manaus e a Amazônia com a Janauatour',
     'hero.subtitle': 'Experiências únicas, passeios exclusivos e atendimento multilíngue para turistas do Brasil e do mundo.',
     'hero.cta1': 'Quero um orçamento',
     'hero.cta2': 'Ver Pacotes',
     
-    // Services
+    // Seção Serviços
     'services.title': 'Nossos Serviços',
     'services.subtitle': 'Oferecemos soluções completas para que sua viagem à Amazônia seja segura, organizada e inesquecível.',
     'services.packages': 'Pacotes Turísticos Personalizados',
@@ -39,7 +50,7 @@ const translations = {
     'services.experiences': 'Experiências Amazônicas Imersivas',
     'services.experiences.desc': 'Dormir na selva, trilhas, comunidades ribeirinhas, pesca tradicional.',
     
-    // Packages
+    // Seção Pacotes
     'packages.title': 'Pacotes em Destaque',
     'packages.from': 'A partir de',
     'packages.amazon3d': 'Amazônia 3 dias',
@@ -52,18 +63,18 @@ const translations = {
     'packages.citytour.desc': 'Teatro Amazonas, Mercado Municipal, Ponta Negra',
     'packages.button': 'Saiba Mais',
     
-    // Testimonials
+    // Seção Depoimentos
     'testimonials.title': 'O Que Dizem Nossos Clientes',
     'testimonials.1': 'Experiência incrível com a Janauatour! Super recomendo.',
     'testimonials.2': 'A equipe da Janauatour foi muito acolhedora.',
     'testimonials.3': 'Tout était parfait ! Merci Janauatour.',
     'testimonials.4': 'Experiencia maravillosa, volveré pronto.',
     
-    // About
+    // Seção Sobre
     'about.title': 'Sobre a Janauatour',
     'about.text': 'A Janauatour nasceu com o propósito de conectar pessoas ao coração da Amazônia. Com anos de experiência, guias credenciados e atendimento multilíngue, oferecemos segurança, conforto e vivências únicas na maior floresta tropical do planeta.',
     
-    // Contact
+    // Seção Contato
     'contact.title': 'Entre em Contato',
     'contact.subtitle': 'Estamos prontos para criar sua experiência amazônica perfeita',
     'contact.name': 'Nome',
@@ -72,7 +83,7 @@ const translations = {
     'contact.send': 'Enviar Mensagem',
     'contact.whatsapp': 'Fale pelo WhatsApp',
     
-    // Footer
+    // Rodapé
     'footer.description': 'Sua porta de entrada para a Amazônia',
     'footer.services': 'Serviços',
     'footer.contact': 'Contato',
@@ -80,20 +91,20 @@ const translations = {
     'footer.rights': 'Todos os direitos reservados.',
   },
   en: {
-    // Header
+    // Navegação
     'nav.home': 'Home',
     'nav.services': 'Services',
     'nav.packages': 'Packages',
     'nav.about': 'About',
     'nav.contact': 'Contact',
     
-    // Hero
+    // Seção Hero
     'hero.title': 'Discover Manaus and the Amazon with Janauatour',
     'hero.subtitle': 'Unique experiences, exclusive tours and multilingual service for tourists from Brazil and around the world.',
     'hero.cta1': 'Get a Quote',
     'hero.cta2': 'View Packages',
     
-    // Services
+    // Seção Serviços
     'services.title': 'Our Services',
     'services.subtitle': 'We offer complete solutions to make your trip to the Amazon safe, organized and unforgettable.',
     'services.packages': 'Custom Tour Packages',
@@ -109,7 +120,7 @@ const translations = {
     'services.experiences': 'Immersive Amazon Experiences',
     'services.experiences.desc': 'Sleep in the jungle, trails, riverside communities, traditional fishing.',
     
-    // Packages
+    // Seção Pacotes
     'packages.title': 'Featured Packages',
     'packages.from': 'From',
     'packages.amazon3d': 'Amazon 3 Days',
@@ -122,18 +133,18 @@ const translations = {
     'packages.citytour.desc': 'Amazon Theatre, Municipal Market, Ponta Negra',
     'packages.button': 'Learn More',
     
-    // Testimonials
+    // Seção Depoimentos
     'testimonials.title': 'What Our Customers Say',
     'testimonials.1': 'Incredible experience with Janauatour! Highly recommend.',
     'testimonials.2': 'The Janauatour team was very welcoming.',
     'testimonials.3': 'Everything was perfect! Thank you Janauatour.',
     'testimonials.4': 'Wonderful experience, I will be back soon.',
     
-    // About
+    // Seção Sobre
     'about.title': 'About Janauatour',
     'about.text': 'Janauatour was born with the purpose of connecting people to the heart of the Amazon. With years of experience, certified guides and multilingual service, we offer safety, comfort and unique experiences in the largest tropical forest on the planet.',
     
-    // Contact
+    // Seção Contato
     'contact.title': 'Get in Touch',
     'contact.subtitle': 'We are ready to create your perfect Amazon experience',
     'contact.name': 'Name',
@@ -142,7 +153,7 @@ const translations = {
     'contact.send': 'Send Message',
     'contact.whatsapp': 'Chat on WhatsApp',
     
-    // Footer
+    // Rodapé
     'footer.description': 'Your gateway to the Amazon',
     'footer.services': 'Services',
     'footer.contact': 'Contact',
@@ -150,20 +161,20 @@ const translations = {
     'footer.rights': 'All rights reserved.',
   },
   es: {
-    // Header
+    // Navegação
     'nav.home': 'Inicio',
     'nav.services': 'Servicios',
     'nav.packages': 'Paquetes',
     'nav.about': 'Acerca',
     'nav.contact': 'Contacto',
     
-    // Hero
+    // Seção Hero
     'hero.title': 'Descubra Manaos y la Amazonia con Janauatour',
     'hero.subtitle': 'Experiencias únicas, tours exclusivos y servicio multilingüe para turistas de Brasil y del mundo.',
     'hero.cta1': 'Solicitar Cotización',
     'hero.cta2': 'Ver Paquetes',
     
-    // Services
+    // Seção Serviços
     'services.title': 'Nuestros Servicios',
     'services.subtitle': 'Ofrecemos soluciones completas para que su viaje a la Amazonia sea seguro, organizado e inolvidable.',
     'services.packages': 'Paquetes Turísticos Personalizados',
@@ -179,7 +190,7 @@ const translations = {
     'services.experiences': 'Experiencias Amazónicas Inmersivas',
     'services.experiences.desc': 'Dormir en la selva, senderos, comunidades ribereñas, pesca tradicional.',
     
-    // Packages
+    // Seção Pacotes
     'packages.title': 'Paquetes Destacados',
     'packages.from': 'Desde',
     'packages.amazon3d': 'Amazonia 3 Días',
@@ -192,18 +203,18 @@ const translations = {
     'packages.citytour.desc': 'Teatro Amazonas, Mercado Municipal, Ponta Negra',
     'packages.button': 'Saber Más',
     
-    // Testimonials
+    // Seção Depoimentos
     'testimonials.title': 'Lo Que Dicen Nuestros Clientes',
     'testimonials.1': 'Experiencia increíble con Janauatour! Super recomiendo.',
     'testimonials.2': 'El equipo de Janauatour fue muy acogedor.',
     'testimonials.3': 'Todo estuvo perfecto! Gracias Janauatour.',
     'testimonials.4': 'Experiencia maravillosa, volveré pronto.',
     
-    // About
+    // Seção Sobre
     'about.title': 'Acerca de Janauatour',
     'about.text': 'Janauatour nació con el propósito de conectar personas al corazón de la Amazonia. Con años de experiencia, guías certificados y servicio multilingüe, ofrecemos seguridad, confort y vivencias únicas en el mayor bosque tropical del planeta.',
     
-    // Contact
+    // Seção Contato
     'contact.title': 'Contacte Con Nosotros',
     'contact.subtitle': 'Estamos listos para crear su experiencia amazónica perfecta',
     'contact.name': 'Nombre',
@@ -212,7 +223,7 @@ const translations = {
     'contact.send': 'Enviar Mensaje',
     'contact.whatsapp': 'Hablar por WhatsApp',
     
-    // Footer
+    // Rodapé
     'footer.description': 'Su puerta de entrada a la Amazonia',
     'footer.services': 'Servicios',
     'footer.contact': 'Contacto',
@@ -220,20 +231,20 @@ const translations = {
     'footer.rights': 'Todos los derechos reservados.',
   },
   fr: {
-    // Header
+    // Navegação
     'nav.home': 'Accueil',
     'nav.services': 'Services',
     'nav.packages': 'Forfaits',
     'nav.about': 'À propos',
     'nav.contact': 'Contact',
     
-    // Hero
+    // Seção Hero
     'hero.title': 'Découvrez Manaus et l\'Amazonie avec Janauatour',
     'hero.subtitle': 'Expériences uniques, circuits exclusifs et service multilingue pour les touristes du Brésil et du monde entier.',
     'hero.cta1': 'Demander un Devis',
     'hero.cta2': 'Voir les Forfaits',
     
-    // Services
+    // Seção Serviços
     'services.title': 'Nos Services',
     'services.subtitle': 'Nous offrons des solutions complètes pour que votre voyage en Amazonie soit sûr, organisé et inoubliable.',
     'services.packages': 'Forfaits Touristiques Personnalisés',
@@ -249,7 +260,7 @@ const translations = {
     'services.experiences': 'Expériences Amazoniennes Immersives',
     'services.experiences.desc': 'Dormir dans la jungle, sentiers, communautés riveraines, pêche traditionnelle.',
     
-    // Packages
+    // Seção Pacotes
     'packages.title': 'Forfaits en Vedette',
     'packages.from': 'À partir de',
     'packages.amazon3d': 'Amazonie 3 Jours',
@@ -262,18 +273,18 @@ const translations = {
     'packages.citytour.desc': 'Théâtre Amazonas, Marché Municipal, Ponta Negra',
     'packages.button': 'En Savoir Plus',
     
-    // Testimonials
+    // Seção Depoimentos
     'testimonials.title': 'Ce Que Disent Nos Clients',
     'testimonials.1': 'Expérience incroyable avec Janauatour! Je recommande vivement.',
     'testimonials.2': 'L\'équipe de Janauatour était très accueillante.',
     'testimonials.3': 'Tout était parfait! Merci Janauatour.',
     'testimonials.4': 'Expérience merveilleuse, je reviendrai bientôt.',
     
-    // About
+    // Seção Sobre
     'about.title': 'À Propos de Janauatour',
     'about.text': 'Janauatour est né dans le but de connecter les gens au cœur de l\'Amazonie. Avec des années d\'expérience, des guides certifiés et un service multilingue, nous offrons sécurité, confort et expériences uniques dans la plus grande forêt tropicale de la planète.',
     
-    // Contact
+    // Seção Contato
     'contact.title': 'Contactez-Nous',
     'contact.subtitle': 'Nous sommes prêts à créer votre expérience amazonienne parfaite',
     'contact.name': 'Nom',
@@ -282,7 +293,7 @@ const translations = {
     'contact.send': 'Envoyer le Message',
     'contact.whatsapp': 'Parler sur WhatsApp',
     
-    // Footer
+    // Rodapé
     'footer.description': 'Votre porte d\'entrée vers l\'Amazonie',
     'footer.services': 'Services',
     'footer.contact': 'Contact',
@@ -291,11 +302,18 @@ const translations = {
   },
 };
 
+// Criação do contexto de idioma
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+/**
+ * Provedor de idioma - envolve a aplicação e fornece
+ * o idioma atual e a função de tradução para todos os componentes filhos.
+ */
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  // Estado do idioma ativo (padrão: português)
   const [language, setLanguage] = useState<Language>('pt');
 
+  // Função de tradução - retorna o texto correspondente à chave no idioma ativo
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations.pt] || key;
   };
@@ -307,10 +325,14 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   );
 };
 
+/**
+ * Hook personalizado para acessar o contexto de idioma.
+ * Deve ser usado dentro de um LanguageProvider.
+ */
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error('useLanguage deve ser usado dentro de um LanguageProvider');
   }
   return context;
 };
