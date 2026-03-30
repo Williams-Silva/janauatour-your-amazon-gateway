@@ -52,9 +52,9 @@ const Testimonials = () => {
                   <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                 ))}
               </div>
-              <p className="text-foreground mb-4 leading-relaxed italic">
-                "{testimonial.text}"
-              </p>
+              <blockquote className="text-foreground mb-4 leading-relaxed italic">
+                <p>"{testimonial.text}"</p>
+              </blockquote>
               <div className="flex items-center gap-2">
                 <span className="text-2xl">{testimonial.flag}</span>
                 <div>
