@@ -48,9 +48,9 @@ const Packages = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {packages.map((pkg, index) => (
+            <article key={index}>
             <Card
-              key={index}
-              className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-border/50"
+              className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-border/50 h-full"
             >
               <div className="bg-gradient-to-br from-primary to-secondary p-6 text-white">
                 <pkg.icon className="w-12 h-12 mb-4" />
